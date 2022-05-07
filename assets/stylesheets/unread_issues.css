@@ -16,7 +16,3 @@ tr.unread td.id:before {
 tr.updated td.id:before {
 	background-color: #5390CA;
 }
-
-#issue-views {
-
-}
