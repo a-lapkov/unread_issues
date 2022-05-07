@@ -1,9 +1,0 @@
-<% path_array = File.dirname(__FILE__).split("/") %>
-<% plugin_name = path_array.fetch(path_array.index("plugins") + 1) %>
-
-<div style="margin-top: 10px">
-<%= image_tag 'logo.png', plugin: plugin_name, alt: l(:label_rmplus_logo), title: l(:label_rmplus_logo), width: 50, style: "vertical-align: bottom;" %>
-<span style="font-size: 10pt; margin-left: 5px;">
-  <%= l(:label_rmplus_logo) %>&nbsp<a href="http://rmplus.pro">http://rmplus.pro</a>.
-</span>
-</div>

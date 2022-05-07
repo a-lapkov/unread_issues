@@ -1,49 +1,22 @@
-tr.unread td.subject:before {
+td.id:before {
 	content: '';
 	display: inline-block;
 	width: 10px;
 	height: 10px;
-	background-color: #9DB94E;
 	border-radius: 50%;
-	margin-right: 4px;
-	margin-bottom: -1px;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-tr.updated td.subject:before {
-	content: '';
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: #5390CA;
-	border-radius: 50%;
-	margin-right: 4px;
-	margin-bottom: -1px;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-#top-menu a span.count, span.count {
-	background-color: #077C10;
-	padding: 0px 5px 0px 5px;
-	position: relative;
-	top: -1px;
-	border-radius: 8px 8px;
-	/*left: 5px;*/
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-	font-size: 7.5pt;
-	font-weight: bold;
 	margin-right: 2px;
-	color: #FFF;
+	margin-bottom: -1px;
+	border: solid 1px green;
 }
 
-#top-menu a span.count.unread {
-	background-color: #c3e26b
+tr.unread td.id:before {
+  background-color: #9DB94E;
 }
 
-#top-menu a span.count.updated {
-	background-color: #76a8d7
+tr.updated td.id:before {
+	background-color: #5390CA;
 }
 
-#top-menu a.ui-my-assigned-issues, #top-menu a.ui-my-unread-issues, #top-menu a.ui-my-updated-issues {
-	margin-right: 3px;
+#issue-views {
+
 }

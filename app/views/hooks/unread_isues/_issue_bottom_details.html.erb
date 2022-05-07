@@ -1,12 +1,25 @@
-<% if (Redmine::Plugin.installed?(:redmine_issue_tabs)) %>
-  <% if User.current.admin? ||
-        (Redmine::Plugin.installed?(:global_roles) && User.current.global_permission_to?(:view_issue_view_stats)) ||
-        (!Redmine::Plugin.installed?(:global_roles) && User.current.allowed_to?(:view_issue_view_stats, @issue.project)) %>
-    <script type="text/javascript">
-      RMPlus.TABS.http_tab = '<%= params[:tab] %>';
-      $(document).ready(function () {
-        RMPlus.TABS.add_new_tab('view_stats', '<%= url_for({ controller: :issue_reads, action: :view_stats, id: @issue.id, only_path: true }) %>', '<%= l(:views_statistics) %>');
-      });
-    </script>
-  <% end %>
+<% if User.current.admin? || User.current.allowed_to?(:view_issue_view_stats, @issue.project) %>
+  <div id="issue-views">
+    <h3><%= l(:views_statistics) %></h3>
+    <% if @issue %>
+      <table class="list" id="issue-views-list" style="width: auto;">
+        <thead>
+          <tr>
+            <th><%= l(:label_unread_issues_employee) %></th>
+            <th><%= l(:label_unread_issues_last_viewed_date) %></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @issue.issue_reads.each do |issue_read| %>
+          <tr>
+            <td><%= link_to_user(issue_read.user) %></td>
+            <td><%= format_time(issue_read.read_date) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="nodata"><%= l(:label_no_data) %></p>
+    <% end %>
+  </div>
 <% end %>

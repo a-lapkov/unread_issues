@@ -7,7 +7,7 @@ module UnreadIssues
       base.class_eval do
         has_many :issue_reads, -> { order 'read_date DESC' }, class_name: 'IssueRead', foreign_key: :issue_id, dependent: :delete_all
         has_one :ui_user_read, -> { where "#{IssueRead.table_name}.user_id = #{User.current.id}" }, class_name: 'IssueRead', foreign_key: 'issue_id'
-        has_one :user_read_list, -> {where "#{IssueRead.table_name}.user_id = #{Issue.table_name}.assigned_to_id" }, class_name: 'IssueRead', foreign_key: 'issue_id'
+        has_one :user_read_list, -> { where "#{IssueRead.table_name}.user_id = #{Issue.table_name}.assigned_to_id" }, class_name: 'IssueRead', foreign_key: 'issue_id'
 
         alias_method :css_classes_without_ui, :css_classes
         alias_method :css_classes, :css_classes_with_ui
@@ -33,7 +33,7 @@ module UnreadIssues
       end
 
       def ui_updated(updated=self.updated_on)
-        !!(self.ui_user_read && self.ui_user_read.read_date && self.updated_on && self.ui_user_read.read_date < updated)
+        !!(self.ui_user_read && self.ui_user_read.read_date && self.ui_user_read.read_date < updated)
       end
 
       def ui_read_date

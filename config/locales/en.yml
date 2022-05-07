@@ -1,27 +1,8 @@
 # English strings go here for Rails i18n
 en:
-  my_issues_on_my_page: "My issues"
   unread_issues_label_filter_unread: 'Unread'
   unread_issues_label_filter_updated: 'Unread changes'
-  unread_issues:
-    settings_label_assigned_issues: 'Query that defines all issues on user'
-    settings_label_unread_issues: 'Request that defines issues that have been changed since user`s last view'
-    settings_label_updated_issues: 'Query that defines new issues on user'
-    magic_my_page:
-      label_changes_in_issues: 'Changes in issues'
-      label_updated_query_id: 'Request that defines issues that have been changed since user`s last view'
-      label_new_issues: 'New issues'
-      label_unread_query_id: 'Query that defines new issues on user'
-      label_view: 'Look through'
-
-  permission_view_issue_view_stats: "View list of users who viewed issue"
   views_statistics: "Views statistics"
+  permission_view_issue_view_stats: "View list of users who viewed issue"
   label_unread_issues_employee: "Employee"
   label_unread_issues_last_viewed_date: "Last viewed on"
-  label_ui_my_issues: "My issues"
-  label_ui_all_issues: "Issues"
-  label_ui_my_assigned_issues: "My issues"
-  label_ui_my_unread_issues: "New issues"
-  label_ui_my_updated_issues: "Updated issued"
-  home: "Home"
-  help: "Help"
