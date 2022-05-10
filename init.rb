@@ -4,34 +4,25 @@ Redmine::Plugin.register :unread_issues do
   end
 end
 
-Rails.application.config.to_prepare do
-  require 'unread_issues/hooks_views'
+require_dependency File.dirname(__FILE__) + '/lib/unread_issues/hooks_views'
+require_dependency File.dirname(__FILE__) + '/lib/unread_issues/issue_patch'
+require_dependency File.dirname(__FILE__) + '/lib/unread_issues/issue_query_patch'
+require_dependency File.dirname(__FILE__) + '/lib/unread_issues/issues_controller_patch'
+require_dependency File.dirname(__FILE__) + '/lib/unread_issues/queries_controller_patch'
+require_dependency File.dirname(__FILE__) + '/lib/unread_issues/user_patch'
 
-  unless Issue.included_modules.include?(UnreadIssues::IssuePatch)
-    Issue.send(:include, UnreadIssues::IssuePatch)
-  end
-  unless User.included_modules.include?(UnreadIssues::UserPatch)
-    User.send(:include, UnreadIssues::UserPatch)
-  end
-  unless IssuesController.included_modules.include?(UnreadIssues::IssuesControllerPatch)
-    IssuesController.send(:include, UnreadIssues::IssuesControllerPatch)
-  end
-  unless IssueQuery.included_modules.include?(UnreadIssues::IssueQueryPatch)
-    IssueQuery.send(:include, UnreadIssues::IssueQueryPatch)
-  end
-  unless QueriesController.included_modules.include?(UnreadIssues::QueriesControllerPatch)
-    QueriesController.send(:include, UnreadIssues::QueriesControllerPatch)
-  end
+unless Issue.included_modules.include?(UnreadIssues::IssuePatch)
+  Issue.send(:include, UnreadIssues::IssuePatch)
 end
-
-Rails.application.config.after_initialize do
-  plugins = {}
-  plugin = Redmine::Plugin.find(:unread_issues)
-  plugins.each do |k,v|
-    begin
-      plugin.requires_redmine_plugin(k, v)
-    rescue Redmine::PluginNotFound
-      raise(Redmine::PluginNotFound, "Plugin requires #{k} not found")
-    end
-  end
-end
+unless IssueQuery.included_modules.include?(UnreadIssues::IssueQueryPatch)
+  IssueQuery.send(:include, UnreadIssues::IssueQueryPatch)
+end  
+unless IssuesController.included_modules.include?(UnreadIssues::IssuesControllerPatch)
+  IssuesController.send(:include, UnreadIssues::IssuesControllerPatch)
+end  
+unless QueriesController.included_modules.include?(UnreadIssues::QueriesControllerPatch)
+  QueriesController.send(:include, UnreadIssues::QueriesControllerPatch)
+end  
+unless User.included_modules.include?(UnreadIssues::UserPatch)
+  User.send(:include, UnreadIssues::UserPatch)
+end  
