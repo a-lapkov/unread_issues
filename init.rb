@@ -1,6 +1,6 @@
 Redmine::Plugin.register :unread_issues do
   project_module :issue_tracking do
-    permission :view_issue_view_stats, issue_view_stats: [:view_stats]
+    # permission :view_issue_view_stats, issue_view_stats: [:view_stats]
   end
 end
 
