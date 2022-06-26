@@ -1,25 +1,23 @@
-<% if User.current.admin? || User.current.allowed_to?(:view_issue_view_stats, @issue.project) %>
-  <div id="issue-views">
-    <h3><%= l(:views_statistics) %></h3>
-    <% if @issue %>
-      <table class="list" id="issue-views-list" style="width: auto;">
-        <thead>
-          <tr>
-            <th><%= l(:label_unread_issues_employee) %></th>
-            <th><%= l(:label_unread_issues_last_viewed_date) %></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @issue.issue_reads.each do |issue_read| %>
-          <tr>
-            <td><%= link_to_user(issue_read.user) %></td>
-            <td><%= format_time(issue_read.read_date) %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <p class="nodata"><%= l(:label_no_data) %></p>
-    <% end %>
-  </div>
-<% end %>
+<div id="issue-views">
+  <h3><%= l(:views_statistics) %></h3>
+  <% if @issue %>
+    <table class="list" id="issue-views-list" style="width: auto;">
+      <thead>
+        <tr>
+          <th><%= l(:label_unread_issues_employee) %></th>
+          <th><%= l(:label_unread_issues_last_viewed_date) %></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @issue.issue_reads.each do |issue_read| %>
+        <tr>
+          <td><%= link_to_user(issue_read.user) %></td>
+          <td><%= format_time(issue_read.read_date) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="nodata"><%= l(:label_no_data) %></p>
+  <% end %>
+</div>
